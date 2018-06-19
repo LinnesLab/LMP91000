@@ -12,7 +12,7 @@
  * A FEW INSTRUCTIONS
  * All methods are defined and coded according to the instructions given in the
  * LMP91000 datsheet, December 2014 Revision, from Texas Instruments. All
- * references to the "datahseet" refer to this specific revision. The datasheet
+ * references to the "datasheet" refer to this specific revision. The datasheet
  * is referenced in the code so that the user can have further consult if he/she
  * needs more information. A copy of the datasheet is included in the software
  * download.
