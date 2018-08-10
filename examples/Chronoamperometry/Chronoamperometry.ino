@@ -103,7 +103,7 @@ signed char determineLMP91000Bias(int16_t voltage)
     else if(voltage > v1 && voltage < v2)
     {
       if(abs(voltage-v1) < abs(voltage-v2)) return polarity*i;
-      else return polarity*i+1;
+      else return polarity*(i+1);
     }
   }
   return 0;
