@@ -36,6 +36,7 @@ void runAmp(uint8_t user_gain, int16_t pre_stepV, uint32_t quietTime, int16_t v1
   pStat.setIntRefSource();
   pStat.setIntZ(1);
   pStat.setThreeLead();
+  pStat.setBias(0);
 
   //Print column headers
   String current = "";
