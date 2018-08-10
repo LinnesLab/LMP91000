@@ -132,6 +132,7 @@ const uint8_t LMP91000_NOT_PRESENT=0xA8;    // arbitrary library status code
 const double TIA_GAIN[] = {2750,3500,7000,14000,35000,120000,350000};
 const double TIA_BIAS[] = {0, 0.01, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14,
     0.16, 0.18, 0.2, 0.22, 0.24};
+const uint8_t NUM_TIA_BIAS = 14;
 const double TIA_ZERO[] = {0.2, 0.5, 0.67};
 
 
