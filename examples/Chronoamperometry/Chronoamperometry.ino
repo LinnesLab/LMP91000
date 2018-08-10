@@ -48,7 +48,7 @@ void runAmp(uint8_t user_gain, int16_t pre_stepV, uint32_t quietTime, int16_t v1
   Serial.println("Voltage(mV),Time(ms)," + current);
 
   int16_t voltageArray[3] = {pre_stepV, v1, v2};
-  int16_t timeArray[3] = {quietTime, t1, t2};
+  uint32_t timeArray[3] = {quietTime, t1, t2};
 
   //i = 0 is pre-step voltage
   //i = 1 is first step potential
@@ -63,10 +63,10 @@ void runAmp(uint8_t user_gain, int16_t pre_stepV, uint32_t quietTime, int16_t v1
     else pStat.setPosBias();
   
     unsigned long startTime = millis();
-    pStat.setBias(voltageArray[i]);
+    pStat.setBias(abs(voltageArray[i]));
     while(millis() - startTime < timeArray[i])
     {
-      Serial.print((uint16_t)(opVolt*TIA_BIAS[voltageArray[i]]*(voltageArray[i]/abs(voltageArray[i]))));
+      Serial.print((uint16_t)(opVolt*TIA_BIAS[abs(voltageArray[i])]*(voltageArray[i]/abs(voltageArray[i]))));
       Serial.print(",");
       Serial.print(millis());
       Serial.print(",");
