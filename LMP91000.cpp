@@ -361,10 +361,32 @@ void LMP91000::setBias(uint8_t bias) const
 {
     unlock();
     uint8_t data = read(LMP91000_REFCN_REG);
-    data &= ~(0x0F);
+    data &= ~(0x0F); //clear the first four bits so I can bit Or in the next step
     data |= bias;
     write(LMP91000_REFCN_REG, data);
 }
+
+
+//void LMP91000::setBias(uint8_t bias) const
+//sign				0 is negative and 1 is positive
+//
+void LMP91000::setBias(uint8_t bias, signed char sign) const
+{
+	if(sign > 0) sign = 1;
+	else sign = 0;
+	sign = (uint8_t)sign;
+	
+	if(bias > 13) bias = 0;
+	
+	
+	unlock();
+	uint8_t data = read(LMP91000_REFCN_REG);
+	data &= ~(0x1F); //clear the first five bits so I can bit Or in the next step
+	data |= bias;
+	data |= ((sign << 4) | bias);
+	write(LMP91000_REFCN_REG, data);
+}
+
 
 //void LMP91000::setFET(uint8_t selection) const
 void LMP91000::setFET(uint8_t selection) const

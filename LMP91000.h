@@ -198,6 +198,7 @@ public:
     void setNegBias() const; //tested
     void setPosBias() const; //tested
     void setBias(uint8_t bias) const; //tested
+	void setBias(uint8_t bias, signed char sign) const;
     
     //enable and disable FET for deep sleep mode
     void setFET(uint8_t selection) const; //tested
