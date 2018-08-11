@@ -71,8 +71,8 @@ void runNPV(uint8_t user_gain, uint32_t pulse_period, uint32_t pulse_width,
 
 
     //find next voltage potential
-    if(startV != 0) nextV = (opVolt*TIA_BIAS[abs(startV)]*startV/abs(startV)) + i*66;
-    else nextV +=  i*66;
+    if(startV != 0) nextV = (opVolt*TIA_BIAS[abs(startV)]*startV/abs(startV)) + i*(opVolt*0.02);
+    else nextV +=  i*(opVolt*0.02);
     nextV = determineLMP91000Bias(nextV);
 
 
