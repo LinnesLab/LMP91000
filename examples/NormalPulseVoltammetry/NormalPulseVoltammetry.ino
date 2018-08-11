@@ -13,6 +13,8 @@ void setup()
 
   pStat.standby();
   delay(1000); //warm-up time for the gas sensor
+  
+  runNPV(1,200,50,0,500,4000,6);
 }
 
 
