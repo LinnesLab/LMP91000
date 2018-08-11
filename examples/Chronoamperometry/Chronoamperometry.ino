@@ -99,7 +99,7 @@ signed char determineLMP91000Bias(int16_t voltage)
     v1 = opVolt*TIA_BIAS[i];
     v2 = opVolt*TIA_BIAS[i+1];
 
-    if(voltage == v1) return i;
+    if(voltage == v1) return polarity*i;
     else if(voltage > v1 && voltage < v2)
     {
       if(abs(voltage-v1) < abs(voltage-v2)) return polarity*i;
