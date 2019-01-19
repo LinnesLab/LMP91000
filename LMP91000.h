@@ -1,59 +1,40 @@
 /*
- * FILENAME:    LMP91000.h
- * AUTHOR:      Orlando S. Hoilett
- * EMAIL:       ohoilett@purdue.edu
- * VERSION:     0.3
+ FILENAME:	LMP91000.h
+ AUTHOR:	Orlando S. Hoilett
+ EMAIL:     ohoilett@purdue.edu
  
  
- * DESCRIPTION
+ Please see .cpp file for extended descriptions, instructions, and version updates
  
  
+ Linnes Lab code, firmware, and software is released under the MIT License
+ (http://opensource.org/licenses/MIT).
  
- * A FEW INSTRUCTIONS
- * All methods are defined and coded according to the instructions given in the
- * LMP91000 datsheet, December 2014 Revision, from Texas Instruments. All
- * references to the "datasheet" refer to this specific revision. The datasheet
- * is referenced in the code so that the user can have further consult if he/she
- * needs more information. A copy of the datasheet is included in the software
- * download.
- *
- * All references to "the device" refer to the LMP91000 Sensor AFE System:
- * Configurable AFE Potentiostat for Low-Power Chemical-Sensing Applications
- * Impedance Analyzer from Texas Instruments.
- *
- * TIA - Transimpedance Amplifier
- * TIACN - Transimpedance Amplifier Control Register (0x10)
- * REFCN - Reference Control Register (0x11)
+ The MIT License (MIT)
  
+ Copyright (c) 2016 Linnes Lab, Purdue University, West Lafayette, IN, USA
  
- * UPDATES
- * Version 0.0
- * 2015/09/18:1200>
- *			Initialization of code development.
- * 2015/10/12:1010>
- *          Testing methods.
- * 2015/10/12:1041>
- *          Noticed that objects cannot be instantiated in the "setup()" method.
- *          No idea why that is.
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ of the Software, and to permit persons to whom the Software is furnished to do
+ so, subject to the following conditions:
  
- * SOURCES
- * Some code snippets were taken from
- * vicatcu. "LMP91000." Authored: Oct 27, 2014. Accessed:
- *      September 18, 2015. GitHub. <https://github.com/WickedDevice/LMP91000>
- * jorgenro1. "lmp91000." Authord: Jan 26, 2015. Acccessed:
- *      September 18, 2015. GitHub. <https://github.com/dgnest/lmp91000>
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
  
- * A couple of other useful links from TI's forum
- * https://e2e.ti.com/support/interface/etc_interface/f/146/t/258263
- * https://e2e.ti.com/support/amplifiers/precision_amplifiers/f/14/t/189399
- * https://e2e.ti.com/support/interface/etc_interface/f/146/t/195448
- * https://e2e.ti.com/support/amplifiers/precision_amplifiers/f/14/t/317192
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
  
- 
- * DISCLAIMER
- * Copyright (C) Linnes Lab 2016, Purdue University, All rights reserved
- *
  */
+
+
 
 
 #ifndef LMP91000_H

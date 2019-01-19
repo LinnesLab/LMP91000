@@ -1,14 +1,61 @@
 /*
- * FILENAME:    LMP91000.h
- * AUTHOR:      Orlando S. Hoilett
- * EMAIL:       ohoilett@purdue.edu
- * VERSION:     0.3
+ FILENAME:    LMP91000.h
+ AUTHOR:      Orlando S. Hoilett
+ EMAIL:       ohoilett@purdue.edu
+ VERSION:     1.0.0
+ 
+ 
+ DESCRIPTION
+ 
+ 
+ 
+ A FEW INSTRUCTIONS
+ * All methods are defined and coded according to the instructions given in the
+ * LMP91000 datsheet, December 2014 Revision, from Texas Instruments. All
+ * references to the "datasheet" refer to this specific revision. The datasheet
+ * is referenced in the code so that the user can have further consult if he/she
+ * needs more information. A copy of the datasheet is included in the software
+ * download.
  *
+ * All references to "the device" refer to the LMP91000 Sensor AFE System:
+ * Configurable AFE Potentiostat for Low-Power Chemical-Sensing Applications
+ * Impedance Analyzer from Texas Instruments.
  *
+ * TIA - Transimpedance Amplifier
+ * TIACN - Transimpedance Amplifier Control Register (0x10)
+ * REFCN - Reference Control Register (0x11)
+ 
+ 
+ * UPDATES
+ * Version 0.0
+ * 2015/09/18:1200>
+ *			Initialization of code development.
+ * 2015/10/12:1010>
+ *          Testing methods.
+ * 2015/10/12:1041>
+ *          Noticed that objects cannot be instantiated in the "setup()" method.
+ *          No idea why that is.
+ 
+ * SOURCES
+ * Some code snippets were taken from
+ * vicatcu. "LMP91000." Authored: Oct 27, 2014. Accessed:
+ *      September 18, 2015. GitHub. <https://github.com/WickedDevice/LMP91000>
+ * jorgenro1. "lmp91000." Authord: Jan 26, 2015. Acccessed:
+ *      September 18, 2015. GitHub. <https://github.com/dgnest/lmp91000>
+ 
+ * A couple of other useful links from TI's forum
+ * https://e2e.ti.com/support/interface/etc_interface/f/146/t/258263
+ * https://e2e.ti.com/support/amplifiers/precision_amplifiers/f/14/t/189399
+ * https://e2e.ti.com/support/interface/etc_interface/f/146/t/195448
+ * https://e2e.ti.com/support/amplifiers/precision_amplifiers/f/14/t/317192
+ 
+ 
  * DISCLAIMER
- * Copyright (C) Linnes Lab 2016, Purdue University, All rights reserved
- *
+ Copyright (c) 2016 Linnes Lab, Purdue University, West Lafayette, IN, USA
+ 
  */
+
+
 
 #include "LMP91000.h"
 
