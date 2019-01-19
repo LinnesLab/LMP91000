@@ -420,7 +420,7 @@ void LMP91000::setMode(uint8_t mode) const
     else if (mode == 3) setThreeLead();
     else if (mode == 4) measureCell();
     else if (mode == 5) getTemp();
-    else; //some error
+	else {}; //some error
 }
 
 //void LMP91000::sleep const
@@ -590,23 +590,6 @@ double LMP91000::getVoltage(uint16_t adcVal, double adc_ref, uint8_t adc_bits) c
 //voltage at the output of LMP91000 and dividing by the value of the gain resistor.
 double LMP91000::getCurrent(uint16_t adcVal, double adc_ref, uint8_t adc_bits) const
 {
-//    Serial.print("adcVal: ");
-//    Serial.print(adcVal);
-//    Serial.print("adc_ref: ");
-//    Serial.print(adc_ref);
-//    Serial.print("adc_bits: ");
-//    Serial.println(adc_bits);
-//    
-//    Serial.print("getVoltage: ");
-//    Serial.print(getVoltage(adcVal, adc_ref, adc_bits),9);
-//    Serial.print("midline: ");
-//    Serial.print(TIA_ZERO[zero]);
-//    Serial.print("midline: ");
-//    Serial.print(adc_ref*TIA_ZERO[zero]);
-//    Serial.print("TIA_GAIN[gain-1]: ");
-//    Serial.println(TIA_GAIN[gain-1]);
-//    Serial.println();
-    
     return (getVoltage(adcVal, adc_ref, adc_bits) - (adc_ref*TIA_ZERO[zero]))/TIA_GAIN[gain-1];
 }
 

@@ -151,22 +151,22 @@ public:
     LMP91000(); //tested
     
     //sets and gets MENB pin for enabling and disabling I2C commands
-    void setMENB(uint8_t pin); //tested
-    uint8_t getMENB() const; //tested
+    void setMENB(uint8_t pin);
+    uint8_t getMENB() const;
     
     //sets and gets pin for reading output of temperature sensor
-    void setTempSensor(uint8_t pin); //tested
-    uint8_t getTempSensor() const; //tested
+    void setTempSensor(uint8_t pin);
+    uint8_t getTempSensor() const;
     
     //reads and writes to LMP91000 via I2C
-    void write(uint8_t reg, uint8_t data) const; //tested
-    uint8_t read(uint8_t reg) const; //tested
+    void write(uint8_t reg, uint8_t data) const;
+    uint8_t read(uint8_t reg) const;
     
     //enables and disables LMP91000 for I2C commands
     //default state is not ready
-    void enable() const; //tested
-    void disable() const; //tested
-    boolean isReady() const; //not working correctly with Eval board
+    void enable() const;
+    void disable() const;
+    boolean isReady() const;
     
     //locks and unlocks the transimpedance amplifier
     //and reference control registers for editing
@@ -176,42 +176,42 @@ public:
     boolean isLocked() const;
     
     //sets the gain of the transimpedance amplifier
-    void setGain(uint8_t gain); //tested
+    void setGain(uint8_t gain);
     double getGain() const;
     
     //sets the load for compensating voltage differences
     //between working and reference electrodes
-    void setRLoad(uint8_t load) const; //tested
+    void setRLoad(uint8_t load) const;
     
     //sets the source for the bias voltage for the
     //electrochemical cell
-    void setRefSource(uint8_t source) const; //tested
-    void setIntRefSource() const; //tested
-    void setExtRefSource() const; //tested
+    void setRefSource(uint8_t source) const;
+    void setIntRefSource() const;
+    void setExtRefSource() const;
     
     //sets reference voltage for transimpedance amplifier
-    void setIntZ(uint8_t intZ); //tested
+    void setIntZ(uint8_t intZ);
     double getIntZ() const;
     
     //sets bias voltage for electrochemical cell
-    void setBiasSign(uint8_t sign) const; //tested
-    void setNegBias() const; //tested
-    void setPosBias() const; //tested
-    void setBias(uint8_t bias) const; //tested
+    void setBiasSign(uint8_t sign) const;
+    void setNegBias() const;
+    void setPosBias() const;
+    void setBias(uint8_t bias) const;
 	void setBias(uint8_t bias, signed char sign) const;
     
     //enable and disable FET for deep sleep mode
-    void setFET(uint8_t selection) const; //tested
-    void disableFET() const; //tested
-    void enableFET() const; //tested
+    void setFET(uint8_t selection) const;
+    void disableFET() const;
+    void enableFET() const;
     
     //set operating modes for the LMP91000
-    void setMode(uint8_t mode) const; //tested
-    void sleep() const; //tested
-    void setTwoLead() const; //tested
-    void standby() const; //tested
-    void setThreeLead() const; //tested
-    void measureCell() const; //tested
+    void setMode(uint8_t mode) const;
+    void sleep() const;
+    void setTwoLead() const;
+    void standby() const;
+    void setThreeLead() const;
+    void measureCell() const;
     void getTemp() const;
     double getTemp(uint8_t sensor, double adc_ref, uint8_t adc_bits) const;
     
