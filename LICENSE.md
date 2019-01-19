@@ -1,4 +1,4 @@
-# LICENSE
+# Linnes Lab LMP91000 Arduino Library License Information
 
 Linnes Lab uses two different licenses for our files — one for hardware and one for code.
 
