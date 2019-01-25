@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.4.2">
+<eagle version="9.2.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -173,45 +173,11 @@
 <text x="2.8575" y="5.842" size="0.9652" layer="21">SDA</text>
 <text x="2.8575" y="8.382" size="0.9652" layer="21">SCL</text>
 <text x="2.8575" y="10.922" size="0.9652" layer="21">MENB</text>
+<dimension x1="0" y1="0" x2="20.32" y2="0" x3="10.16" y3="-2.3622" textsize="0.889" layer="109" visible="yes"/>
+<dimension x1="0" y1="17.78" x2="0" y2="0" x3="-1.9812" y3="8.89" textsize="0.889" layer="109" visible="yes"/>
 </plain>
 <libraries>
-<library name="CalvEngIO-Passives">
-<packages>
-<package name="C0402">
-<description>&lt;b&gt;CAPACITOR&lt;/b&gt;</description>
-<wire x1="-0.245" y1="0.224" x2="0.245" y2="0.224" width="0.1524" layer="51"/>
-<wire x1="0.245" y1="-0.224" x2="-0.245" y2="-0.224" width="0.1524" layer="51"/>
-<wire x1="-1.1174" y1="0.483" x2="1.1174" y2="0.483" width="0.0508" layer="39"/>
-<wire x1="1.1174" y1="0.483" x2="1.1174" y2="-0.483" width="0.0508" layer="39"/>
-<wire x1="1.1174" y1="-0.483" x2="-1.1174" y2="-0.483" width="0.0508" layer="39"/>
-<wire x1="-1.1174" y1="-0.483" x2="-1.1174" y2="0.483" width="0.0508" layer="39"/>
-<smd name="1" x="-0.65" y="0" dx="0.7" dy="0.9" layer="1"/>
-<smd name="2" x="0.65" y="0" dx="0.7" dy="0.9" layer="1"/>
-<text x="-0.635" y="0.635" size="1.27" layer="25">&gt;NAME</text>
-<text x="-0.635" y="-1.905" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.554" y1="-0.3048" x2="-0.254" y2="0.2951" layer="51"/>
-<rectangle x1="0.2588" y1="-0.3048" x2="0.5588" y2="0.2951" layer="51"/>
-<rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
-</package>
-<package name="R0402">
-<description>&lt;b&gt;RESISTOR&lt;/b&gt;</description>
-<wire x1="-0.245" y1="0.224" x2="0.245" y2="0.224" width="0.1524" layer="51"/>
-<wire x1="0.245" y1="-0.224" x2="-0.245" y2="-0.224" width="0.1524" layer="51"/>
-<wire x1="-1.0968" y1="0.483" x2="1.0968" y2="0.483" width="0.0508" layer="39"/>
-<wire x1="1.0968" y1="0.483" x2="1.0968" y2="-0.483" width="0.0508" layer="39"/>
-<wire x1="1.0968" y1="-0.483" x2="-1.0968" y2="-0.483" width="0.0508" layer="39"/>
-<wire x1="-1.0968" y1="-0.483" x2="-1.0968" y2="0.483" width="0.0508" layer="39"/>
-<smd name="1" x="-0.65" y="0" dx="0.7" dy="0.9" layer="1"/>
-<smd name="2" x="0.65" y="0" dx="0.7" dy="0.9" layer="1"/>
-<text x="-0.635" y="0.635" size="1.27" layer="25">&gt;NAME</text>
-<text x="-0.635" y="-1.905" size="1.27" layer="27">&gt;VALUE</text>
-<rectangle x1="-0.554" y1="-0.3048" x2="-0.254" y2="0.2951" layer="51"/>
-<rectangle x1="0.2588" y1="-0.3048" x2="0.5588" y2="0.2951" layer="51"/>
-<rectangle x1="-0.1999" y1="-0.4001" x2="0.1999" y2="0.4001" layer="35"/>
-</package>
-</packages>
-</library>
-<library name="CalvEngIO-Sensors">
+<library name="LinnesLab-Sensors">
 <packages>
 <package name="WSON-14">
 <smd name="1" x="0" y="3.5" dx="0.6" dy="0.25" layer="1"/>
@@ -239,7 +205,44 @@
 </package>
 </packages>
 </library>
-<library name="CalvEngIO-Connectors">
+<library name="LinnesLab-Passives">
+<packages>
+<package name="R0402-BIGGER">
+<description>&lt;p&gt;&lt;b&gt;Generic 1005 (0402) package&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;0.2mm courtyard excess rounded to nearest 0.05mm.&lt;/p&gt;</description>
+<wire x1="-0.2704" y1="0.2286" x2="0.2704" y2="0.2286" width="0.1524" layer="51"/>
+<wire x1="0.2704" y1="-0.2286" x2="-0.2704" y2="-0.2286" width="0.1524" layer="51"/>
+<wire x1="-1.073" y1="0.523" x2="1.0476" y2="0.523" width="0.0508" layer="39"/>
+<wire x1="1.0476" y1="0.523" x2="1.0476" y2="-0.523" width="0.0508" layer="39"/>
+<wire x1="1.0476" y1="-0.523" x2="-1.073" y2="-0.523" width="0.0508" layer="39"/>
+<wire x1="-1.073" y1="-0.523" x2="-1.073" y2="0.523" width="0.0508" layer="39"/>
+<smd name="1" x="-0.58" y="0" dx="0.85" dy="0.9" layer="1"/>
+<smd name="2" x="0.58" y="0" dx="0.85" dy="0.9" layer="1"/>
+<text x="0" y="0.762" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-0.762" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+<rectangle x1="-0.554" y1="-0.3048" x2="-0.254" y2="0.3048" layer="51"/>
+<rectangle x1="0.2588" y1="-0.3048" x2="0.5588" y2="0.3048" layer="51"/>
+<rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
+</package>
+<package name="C0402">
+<description>&lt;b&gt;CAPACITOR&lt;/b&gt;</description>
+<wire x1="-0.245" y1="0.224" x2="0.245" y2="0.224" width="0.1524" layer="51"/>
+<wire x1="0.245" y1="-0.224" x2="-0.245" y2="-0.224" width="0.1524" layer="51"/>
+<wire x1="-1.1174" y1="0.483" x2="1.1174" y2="0.483" width="0.0508" layer="39"/>
+<wire x1="1.1174" y1="0.483" x2="1.1174" y2="-0.483" width="0.0508" layer="39"/>
+<wire x1="1.1174" y1="-0.483" x2="-1.1174" y2="-0.483" width="0.0508" layer="39"/>
+<wire x1="-1.1174" y1="-0.483" x2="-1.1174" y2="0.483" width="0.0508" layer="39"/>
+<smd name="1" x="-0.65" y="0" dx="0.7" dy="0.9" layer="1"/>
+<smd name="2" x="0.65" y="0" dx="0.7" dy="0.9" layer="1"/>
+<text x="-0.635" y="0.635" size="1.27" layer="25">&gt;NAME</text>
+<text x="-0.635" y="-1.905" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.554" y1="-0.3048" x2="-0.254" y2="0.2951" layer="51"/>
+<rectangle x1="0.2588" y1="-0.3048" x2="0.5588" y2="0.2951" layer="51"/>
+<rectangle x1="-0.1999" y1="-0.3" x2="0.1999" y2="0.3" layer="35"/>
+</package>
+</packages>
+</library>
+<library name="LinnesLab-Connectors">
 <packages>
 <package name="1X05_NO_SILK">
 <description>&lt;h3&gt;Plated Through Hole - 5 Pin No Silk Outline&lt;/h3&gt;
@@ -291,8 +294,15 @@
 </package>
 </packages>
 </library>
-<library name="CalvEngIO-Logos">
+<library name="LinnesLab-Logos">
 <packages>
+<package name="LINNES.LAB.05">
+<text x="0" y="0" size="1.27" layer="21" font="vector" ratio="15">Linnes Lab</text>
+</package>
+<package name="LINNES.LAB.LOGO">
+<text x="0" y="0" size="1.27" layer="21" font="vector">L</text>
+<text x="0.508" y="-0.508" size="1.27" layer="21" font="vector">L</text>
+</package>
 <package name="OSHW-LOGO-S">
 <description>&lt;h3&gt;Open-Source Hardware (OSHW) Logo - Small - Silkscreen&lt;/h3&gt;
 &lt;p&gt;Silkscreen logo for open-source hardware designs.&lt;/p&gt;
@@ -334,17 +344,6 @@
 <vertex x="0.1794" y="-0.4331"/>
 </polygon>
 </package>
-<package name="LINNES.LAB.LOGO">
-<text x="0" y="0" size="1.27" layer="21" font="vector">L</text>
-<text x="0.508" y="-0.508" size="1.27" layer="21" font="vector">L</text>
-</package>
-<package name="LINNES.LAB.05">
-<text x="0" y="0" size="1.27" layer="21" font="vector" ratio="15">Linnes Lab</text>
-</package>
-</packages>
-</library>
-<library name="CalvEngIO-Symbols">
-<packages>
 <package name="REV.B">
 <text x="0" y="0" size="0.6096" layer="21">RevB</text>
 </package>
@@ -435,6 +434,10 @@ Please make sure your boards conform to these design rules.</description>
 <param name="checkFont" value="1"/>
 <param name="checkRestrict" value="1"/>
 <param name="checkStop" value="0"/>
+<param name="checkValues" value="0"/>
+<param name="checkNames" value="1"/>
+<param name="checkWireStubs" value="1"/>
+<param name="checkPolygonWidth" value="0"/>
 <param name="useDiameter" value="13"/>
 <param name="maxErrors" value="50"/>
 </designrules>
@@ -535,32 +538,32 @@ Please make sure your boards conform to these design rules.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="C1" library="CalvEngIO-Passives" package="C0402" value="100n" x="6.9342" y="7.62" smashed="yes" rot="R270">
+<element name="C1" library="LinnesLab-Passives" package="C0402" value="100n" x="6.9342" y="7.62" smashed="yes" rot="R270">
 <attribute name="NAME" x="6.4516" y="5.5372" size="0.635" layer="25"/>
 <attribute name="VALUE" x="5.0292" y="8.255" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="LMP91000" library="CalvEngIO-Sensors" package="WSON-14" value="LMP91000" x="8.255" y="7.2898" smashed="yes">
+<element name="LMP91000" library="LinnesLab-Sensors" package="WSON-14" value="LMP91000" x="8.255" y="7.2898" smashed="yes">
 <attribute name="NAME" x="7.6454" y="12.5222" size="0.762" layer="25"/>
 <attribute name="VALUE" x="8.255" y="6.6548" size="0.508" layer="27"/>
 </element>
-<element name="R1" library="CalvEngIO-Passives" package="R0402" value="10k" x="3.7084" y="15.1384" smashed="yes" rot="R90">
+<element name="R1" library="LinnesLab-Passives" package="R0402-BIGGER" value="10k" x="3.7084" y="15.1384" smashed="yes" rot="R90">
 <attribute name="NAME" x="4.3434" y="17.145" size="0.635" layer="25" rot="R180"/>
 <attribute name="VALUE" x="5.6134" y="14.5034" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R2" library="CalvEngIO-Passives" package="R0402" value="10k" x="5.4864" y="15.1638" smashed="yes" rot="R90">
-<attribute name="NAME" x="6.096" y="17.0942" size="0.635" layer="25" rot="R180"/>
-<attribute name="VALUE" x="7.3914" y="14.5288" size="1.27" layer="27" rot="R90"/>
+<element name="R2" library="LinnesLab-Passives" package="R0402-BIGGER" value="10k" x="5.4864" y="15.1384" smashed="yes" rot="R90">
+<attribute name="NAME" x="6.096" y="17.145" size="0.635" layer="25" rot="R180"/>
+<attribute name="VALUE" x="7.3914" y="14.5034" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="J4" library="CalvEngIO-Connectors" package="1X05_NO_SILK" value="" x="1.27" y="1.27" smashed="yes" rot="R90">
+<element name="J4" library="LinnesLab-Connectors" package="1X05_NO_SILK" value="" x="1.27" y="1.27" smashed="yes" rot="R90">
 <attribute name="VALUE" x="3.302" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
-<element name="LOGO1" library="CalvEngIO-Logos" package="OSHW-LOGO-S" value="OSHW-LOGOS" x="10.3378" y="12.5476" rot="MR0"/>
-<element name="J1" library="CalvEngIO-Connectors" package="1X07_NO_SILK" value="" x="19.05" y="1.27" smashed="yes" rot="R90">
+<element name="LOGO1" library="LinnesLab-Logos" package="OSHW-LOGO-S" value="OSHW-LOGOS" x="10.3378" y="12.5476" smashed="yes" rot="MR0"/>
+<element name="J1" library="LinnesLab-Connectors" package="1X07_NO_SILK" value="" x="19.05" y="1.27" smashed="yes" rot="R90">
 <attribute name="VALUE" x="21.082" y="0" size="0.6096" layer="27" font="vector" ratio="20" rot="R90"/>
 </element>
-<element name="U$2" library="CalvEngIO-Logos" package="LINNES.LAB.LOGO" value="LINNES.LAB.LOGO" x="9.8552" y="4.2164"/>
-<element name="U$1" library="CalvEngIO-Logos" package="LINNES.LAB.05" value="LINNES.LAB.05" x="15.748" y="15.3416" rot="MR0"/>
-<element name="U$3" library="CalvEngIO-Symbols" package="REV.B" value="REVISION.B" x="11.43" y="0.254" rot="MR0"/>
+<element name="U$2" library="LinnesLab-Logos" package="LINNES.LAB.LOGO" value="LINNES.LAB.LOGO" x="9.8552" y="4.2164" smashed="yes"/>
+<element name="U$1" library="LinnesLab-Logos" package="LINNES.LAB.05" value="LINNES.LAB.05" x="15.748" y="15.3416" smashed="yes" rot="MR0"/>
+<element name="U$3" library="LinnesLab-Logos" package="REV.B" value="REVISION.B" x="11.43" y="0.254" smashed="yes" rot="MR0"/>
 </elements>
 <signals>
 <signal name="VOUT">
@@ -577,29 +580,27 @@ Please make sure your boards conform to these design rules.</description>
 </signal>
 <signal name="C1">
 <contactref element="LMP91000" pad="10"/>
-<wire x1="12.055" y1="8.7898" x2="16.6142" y2="8.7858" width="0.2032" layer="1"/>
 <contactref element="J1" pad="3"/>
-<wire x1="16.6142" y1="8.7858" x2="19.05" y2="6.35" width="0.2032" layer="1"/>
+<wire x1="12.055" y1="8.7898" x2="16.6102" y2="8.7898" width="0.2032" layer="1"/>
+<wire x1="16.6102" y1="8.7898" x2="19.05" y2="6.35" width="0.2032" layer="1"/>
 </signal>
 <signal name="VREF">
 <contactref element="LMP91000" pad="11"/>
 <contactref element="J1" pad="4"/>
-<wire x1="18.7452" y1="9.1948" x2="19.05" y2="8.89" width="0.2032" layer="1"/>
-<wire x1="18.7452" y1="9.1948" x2="18.6542" y2="9.2858" width="0.2032" layer="1"/>
 <wire x1="12.055" y1="9.2898" x2="18.6502" y2="9.2898" width="0.2032" layer="1"/>
-<wire x1="18.6502" y1="9.2898" x2="18.7452" y2="9.1948" width="0.2032" layer="1"/>
+<wire x1="18.6502" y1="9.2898" x2="19.05" y2="8.89" width="0.2032" layer="1"/>
 </signal>
 <signal name="WE">
 <contactref element="LMP91000" pad="12"/>
-<wire x1="12.055" y1="9.7898" x2="17.4058" y2="9.7858" width="0.2032" layer="1"/>
 <contactref element="J1" pad="5"/>
-<wire x1="17.4058" y1="9.7858" x2="19.05" y2="11.43" width="0.2032" layer="1"/>
+<wire x1="12.055" y1="9.7898" x2="17.4098" y2="9.7898" width="0.2032" layer="1"/>
+<wire x1="17.4098" y1="9.7898" x2="19.05" y2="11.43" width="0.2032" layer="1"/>
 </signal>
 <signal name="RE">
 <contactref element="LMP91000" pad="13"/>
-<wire x1="12.055" y1="10.2898" x2="15.3658" y2="10.2858" width="0.2032" layer="1"/>
 <contactref element="J1" pad="6"/>
-<wire x1="15.3658" y1="10.2858" x2="19.05" y2="13.97" width="0.2032" layer="1"/>
+<wire x1="12.055" y1="10.2898" x2="15.3698" y2="10.2898" width="0.2032" layer="1"/>
+<wire x1="15.3698" y1="10.2898" x2="19.05" y2="13.97" width="0.2032" layer="1"/>
 </signal>
 <signal name="CE">
 <contactref element="LMP91000" pad="14"/>
@@ -616,7 +617,7 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="4.3942" y1="7.0358" x2="3.7338" y2="6.3754" width="0.2032" layer="1"/>
 <wire x1="3.7338" y1="6.3754" x2="1.2954" y2="6.3754" width="0.2032" layer="1"/>
 <wire x1="1.2954" y1="6.3754" x2="1.27" y2="6.35" width="0.2032" layer="1"/>
-<wire x1="3.7084" y1="14.4884" x2="3.7084" y2="13.4366" width="0.2032" layer="1"/>
+<wire x1="3.7084" y1="14.5584" x2="3.7084" y2="13.4366" width="0.2032" layer="1"/>
 <via x="3.7084" y="13.4366" extent="1-16" drill="0.35"/>
 <wire x1="3.7084" y1="13.4366" x2="3.7084" y2="8.3823375" width="0.2032" layer="16"/>
 <wire x1="3.7084" y1="8.3823375" x2="4.3942" y2="7.6965375" width="0.2032" layer="16"/>
@@ -629,11 +630,10 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="LMP91000" pad="3"/>
 <contactref element="R2" pad="1"/>
 <contactref element="J4" pad="4"/>
-<wire x1="5.507615625" y1="9.7858" x2="8.255" y2="9.7898" width="0.2032" layer="1"/>
-<wire x1="5.507615625" y1="9.7858" x2="2.1658" y2="9.7858" width="0.2032" layer="1"/>
-<wire x1="2.1658" y1="9.7858" x2="1.27" y2="8.89" width="0.2032" layer="1"/>
-<wire x1="5.4864" y1="14.5138" x2="5.4864" y2="9.807015625" width="0.2032" layer="1"/>
-<wire x1="5.4864" y1="9.807015625" x2="5.507615625" y2="9.7858" width="0.2032" layer="1"/>
+<wire x1="8.255" y1="9.7898" x2="5.4864" y2="9.7898" width="0.2032" layer="1"/>
+<wire x1="5.4864" y1="9.7898" x2="2.1698" y2="9.7898" width="0.2032" layer="1"/>
+<wire x1="2.1698" y1="9.7898" x2="1.27" y2="8.89" width="0.2032" layer="1"/>
+<wire x1="5.4864" y1="14.5584" x2="5.4864" y2="9.7898" width="0.2032" layer="1"/>
 </signal>
 <signal name="MENB">
 <contactref element="LMP91000" pad="2"/>
@@ -653,8 +653,8 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="LMP91000" pad="DAP"/>
 <contactref element="C1" pad="2"/>
 <polygon width="0.1524" layer="1">
-<vertex x="0.3302" y="11.811"/>
-<vertex x="11.43" y="11.811"/>
+<vertex x="0.3302" y="11.2776"/>
+<vertex x="11.43" y="11.2776"/>
 <vertex x="11.43" y="0.4064"/>
 <vertex x="0.3302" y="0.4064"/>
 </polygon>
@@ -666,26 +666,35 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="R1" pad="2"/>
 <contactref element="R2" pad="2"/>
 <contactref element="J4" pad="2"/>
-<wire x1="6.5944" y1="8.2858" x2="6.9342" y2="8.27" width="0.254" layer="1"/>
 <wire x1="5.7046" y1="8.27" x2="5.5626" y2="8.128" width="0.254" layer="1"/>
 <wire x1="5.5626" y1="8.128" x2="5.5626" y2="4.2926" width="0.254" layer="1"/>
 <wire x1="5.5626" y1="4.2926" x2="5.08" y2="3.81" width="0.254" layer="1"/>
 <wire x1="5.08" y1="3.81" x2="1.27" y2="3.81" width="0.254" layer="1"/>
-<wire x1="8.255" y1="8.2898" x2="6.95" y2="8.2858" width="0.254" layer="1"/>
 <wire x1="6.95" y1="8.2858" x2="6.9342" y2="8.27" width="0.254" layer="1"/>
-<wire x1="6.9342" y1="8.27" x2="5.7046" y2="8.27" width="0.254" layer="1"/>
-<wire x1="5.4864" y1="15.8138" x2="3.7338" y2="15.8138" width="0.2032" layer="1"/>
-<wire x1="3.7338" y1="15.8138" x2="3.7084" y2="15.7884" width="0.2032" layer="1"/>
-<wire x1="3.7084" y1="15.7884" x2="2.682" y2="15.7884" width="0.2032" layer="1"/>
-<wire x1="2.682" y1="15.7884" x2="2.4638" y2="15.5702" width="0.2032" layer="1"/>
-<wire x1="2.4638" y1="15.5702" x2="2.4638" y2="13.4902" width="0.2032" layer="1"/>
 <via x="2.4638" y="13.4902" extent="1-16" drill="0.35"/>
 <wire x1="2.4638" y1="13.4902" x2="2.4638" y2="13.3604" width="0.2032" layer="16"/>
 <wire x1="2.4638" y1="13.3604" x2="2.794" y2="13.0302" width="0.2032" layer="16"/>
 <wire x1="2.794" y1="13.0302" x2="2.794" y2="5.334" width="0.2032" layer="16"/>
 <wire x1="2.794" y1="5.334" x2="1.27" y2="3.81" width="0.2032" layer="16"/>
+<wire x1="3.7084" y1="15.7184" x2="2.6882" y2="15.7184" width="0.2032" layer="1"/>
+<wire x1="2.6882" y1="15.7184" x2="2.4638" y2="15.494" width="0.2032" layer="1"/>
+<wire x1="2.4638" y1="15.494" x2="2.4638" y2="13.4902" width="0.2032" layer="1"/>
+<wire x1="3.7084" y1="15.7184" x2="5.4864" y2="15.7184" width="0.2032" layer="1"/>
+<wire x1="8.255" y1="8.2898" x2="8.251" y2="8.2858" width="0.254" layer="1"/>
+<wire x1="8.251" y1="8.2858" x2="6.95" y2="8.2858" width="0.254" layer="1"/>
+<wire x1="6.9342" y1="8.27" x2="5.7046" y2="8.27" width="0.254" layer="1"/>
 </signal>
 </signals>
+<mfgpreviewcolors>
+<mfgpreviewcolor name="soldermaskcolor" color="0xC8008000"/>
+<mfgpreviewcolor name="silkscreencolor" color="0xFFFEFEFE"/>
+<mfgpreviewcolor name="backgroundcolor" color="0xFF282828"/>
+<mfgpreviewcolor name="coppercolor" color="0xFFFFBF00"/>
+<mfgpreviewcolor name="substratecolor" color="0xFF786E46"/>
+</mfgpreviewcolors>
+<errors>
+<approved hash="23,1,e8e665a66504e844"/>
+</errors>
 </board>
 </drawing>
 </eagle>
