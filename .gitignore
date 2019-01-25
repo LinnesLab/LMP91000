@@ -1,4 +1,4 @@
-hardware/*
+extras/*
 !*.sch
 !*.brd
 !*.zip
