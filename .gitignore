@@ -6,6 +6,8 @@ hardware/*
 !*.png
 !*.jpg
 !*.jpeg
+!*.xlsx
+!*.xls
 
 # Ignore Mac DS_Store files in all directories
 .DS_Store
