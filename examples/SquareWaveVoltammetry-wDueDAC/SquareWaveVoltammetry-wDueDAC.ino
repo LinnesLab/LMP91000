@@ -5,7 +5,6 @@
 LMP91000 pStat = LMP91000();
 
 
-uint16_t i = 0;
 uint16_t opVolt = 3310;
 const double v_tolerance = 0.1; //10%
 
