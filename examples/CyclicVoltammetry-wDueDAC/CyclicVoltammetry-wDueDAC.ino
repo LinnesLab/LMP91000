@@ -6,7 +6,7 @@ LMP91000 pStat = LMP91000();
 
 
 uint16_t opVolt = 3310;
-const double v_tolerance = 0.1; //10%
+const double v_tolerance = 0.01;
 
 
 const uint16_t dacMin = 550; //0.55V
@@ -32,7 +32,7 @@ void setup()
   delay(50);
   pStat.standby();
   delay(50);
-  initLMP(3);  
+  initLMP(0);  
   delay(2000); //warm-up time for the gas sensor
   
   
@@ -47,11 +47,13 @@ void setup()
 
 
   //lmpGain, cycles, startV, endV, stepV, rate
-  runCV(2, 3, -200, 440, 4, 100);
+  runCV(0, 3, -470, 50, 3, 50);
 }
 
 void loop()
 {
+  while(!Serial.available());
+  Serial.read();
 }
 
 
@@ -65,12 +67,14 @@ void initLMP(uint8_t lmpGain)
   pStat.setThreeLead();
   pStat.setBias(0);
   pStat.setPosBias();
+  analogWrite(DAC0,0);
 }
 
 
 
 void runCV(int8_t lmpGain, int8_t cycles, int16_t startV,
-           int16_t endV, int16_t stepV, int16_t rate)
+           int16_t endV, int16_t vertex1, int16_t vertex2,
+           int16_t stepV, int16_t rate)
 {
   initLMP(lmpGain);
 
