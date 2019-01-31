@@ -11,7 +11,7 @@ LMP91000 pStat = LMP91000();
 const int AD56X4_SS_pin = 10;
 
 const uint16_t opVolt = 3340;
-const double v_tolerance = 0.01;
+const double v_tolerance = 0.0075;
 
 
 //const uint16_t dacMin = 0; //0V
@@ -70,7 +70,7 @@ void loop()
 
   
   //lmpGain, cycles, startV(mV), endV(mV), vertex1(mV), vertex2(mV), stsepV(mV), rate (mV/s)
-  runCV(4, 3, 0, 0, 450, -200, 2, 100);
+  runCV(4, 2, 0, 0, 600, -500, 2, 100);
 }
 
 
