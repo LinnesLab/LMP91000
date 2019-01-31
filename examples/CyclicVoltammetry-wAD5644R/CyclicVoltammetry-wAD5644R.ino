@@ -65,12 +65,18 @@ void loop()
 
 
   //prints column headings
-  if(debug) Serial.println(F("Time(ms),Voltage,Sign,Bias Index,Bias,dacOut,DueDACValue,DAC Read,LMP,C1,C2"));
+//  if(debug) Serial.println(F("Time(ms),Voltage,Sign,Bias Index,Bias,dacOut,DueDACValue,DAC Read,LMP,C1,C2"));
+//  else Serial.println(F("Time(ms),Voltage,LMP,C1,C2"));
+
+  //prints column headings
+  if(debug) Serial.println(F("Time(ms),Voltage,Sign,Bias Index,Bias,dacOut,DueDACValue,DAC Read,LMP,C1,C2,DiffAmp,INA"));
   else Serial.println(F("Time(ms),Voltage,LMP,C1,C2"));
 
   
   //lmpGain, cycles, startV(mV), endV(mV), vertex1(mV), vertex2(mV), stsepV(mV), rate (mV/s)
-  runCV(4, 2, 0, 0, 600, -500, 2, 100);
+  runCV(4, 2, 0, 0, 450, -200, 2, 100);
+  //Serial.println("Backward Scan");
+  //runCV(4, 2, 0, 0, -500, 600, 2, 100);
 }
 
 
@@ -219,6 +225,7 @@ void biasAndSample(int16_t voltage, uint16_t rate)
   
   delay(rate);
   sampleOutputs();
+  testingDiffAndINAAmps();
   Serial.println();
 }
 
@@ -233,6 +240,15 @@ void sampleOutputs()
   Serial.print(analogRead(C1));
   Serial.print(F(","));
   Serial.print(analogRead(C2));
+}
+
+
+void testingDiffAndINAAmps()
+{
+  Serial.print(F(","));
+  Serial.print(analogRead(diffAmp));
+  Serial.print(F(","));
+  Serial.print(analogRead(INA));
 }
 
 
