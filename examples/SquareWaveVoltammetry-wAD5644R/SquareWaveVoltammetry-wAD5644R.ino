@@ -55,7 +55,8 @@ LMP91000 pStat = LMP91000();
 
 const int AD56X4_SS_pin = 10;
 
-const uint16_t opVolt = 3340;
+const uint16_t opVolt = 3280;
+const uint8_t adcBits = 10;
 const double v_tolerance = 0.0075;
 
 
@@ -116,10 +117,11 @@ void loop()
 
   
   //lmpGain, startV(mV), endV(mV), pulseAmp(mV), stepV(mV), freq(Hz)
-  runSWV(2, 0, 450, 50, 2, 120);
-  delay(3000);
+  runSWV(2, 100, -500, 50, 2, 120);
   Serial.println("Backward scan");
-  runSWV(2, 450, 0, 50, 2, 120);
+  runSWV(2, -500, 100, 50, 2, 120);
+
+  setOutputsToZero();
 }
 
 
@@ -127,7 +129,8 @@ void initLMP(uint8_t lmpGain)
 {
   pStat.disableFET();
   pStat.setGain(lmpGain);
-  pStat.setRLoad(0);
+  //pStat.setRLoad(0);
+  pStat.setRLoad(3);
   pStat.setExtRefSource();
   pStat.setIntZ(1);
   pStat.setThreeLead();
@@ -158,7 +161,7 @@ void runSWV(uint8_t lmpGain, int16_t startV, int16_t endV,
   if(startV < endV) runSWVForward(startV, endV, pulseAmp, stepV, freq);
   else runSWVBackward(startV, endV, pulseAmp, stepV, freq);
 
-  setOutputsToZero();
+  //setOutputsToZero();
 }
 
 
@@ -213,22 +216,37 @@ void biasAndSample(int16_t voltage, uint16_t rate)
 
 void sampleOutputs()
 {
-  Serial.print(analogRead(DACRead));
+//  Serial.print(analogRead(DACRead));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(LMP));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(C1));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(C2));
+
+
+  Serial.print(pStat.getVoltage(analogRead(DACRead),opVolt,adcBits),3);
   Serial.print(F(","));
-  Serial.print(analogRead(LMP));
+  Serial.print(pStat.getCurrent(analogRead(LMP),opVolt,adcBits),4);
   Serial.print(F(","));
-  Serial.print(analogRead(C1));
+  Serial.print(pStat.getCurrent(analogRead(C1),opVolt,adcBits),4);
   Serial.print(F(","));
-  Serial.print(analogRead(C2));
+  Serial.print(pStat.getCurrent(analogRead(C2),opVolt,adcBits),4);
 }
 
 
 void testingDiffAndINAAmps()
 {
+//  Serial.print(F(","));
+//  Serial.print(analogRead(diffAmp));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(INA));
+
+
   Serial.print(F(","));
-  Serial.print(analogRead(diffAmp));
+  Serial.print(pStat.getCurrent(analogRead(diffAmp),opVolt,adcBits),4);
   Serial.print(F(","));
-  Serial.print(analogRead(INA));
+  Serial.print(pStat.getCurrent(analogRead(INA),opVolt,adcBits),4);
 }
 
 

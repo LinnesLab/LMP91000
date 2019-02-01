@@ -74,7 +74,7 @@ void loop()
 
   
   //lmpGain, cycles, startV(mV), endV(mV), vertex1(mV), vertex2(mV), stsepV(mV), rate (mV/s)
-  runCV(4, 2, 0, 0, 450, -200, 2, 100);
+  runCV(5, 2, 0, 0, -500, 400, 2, 100);
   //Serial.println("Backward Scan");
   //runCV(4, 2, 0, 0, -500, 600, 2, 100);
 }
