@@ -10,8 +10,10 @@ LMP91000 pStat = LMP91000();
 
 const int AD56X4_SS_pin = 10;
 
-const uint16_t opVolt = 3340;
+const uint16_t opVolt = 3280;
+const uint8_t adcBits = 10;
 const double v_tolerance = 0.0075;
+const double extGain = 3900000;
 
 
 //const uint16_t dacMin = 0; //0V
@@ -52,12 +54,12 @@ void setup()
   initLMP(0);
   delay(2000); //warm-up time for the gas sensor
 
-
-  Serial.println(F("Ready!"));
 }
 
 void loop()
 {
+  Serial.println(F("Ready!"));
+  
   //will hold the code here until a character is sent over the serial port
   //this ensures the experiment will only run when initiated
   while(!Serial.available());
@@ -73,8 +75,8 @@ void loop()
   else Serial.println(F("Time(ms),Voltage,LMP,C1,C2"));
 
   
-  //lmpGain, cycles, startV(mV), endV(mV), vertex1(mV), vertex2(mV), stsepV(mV), rate (mV/s)
-  runCV(5, 2, 0, 0, -500, 400, 2, 100);
+  //lmpGain, cycles, startV(mV), endV(mV), vertex1(mV), vertex2(mV), stepV(mV), rate (mV/s)
+  runCV(0, 3, 0, 0, 50, -450, 2, 65);
   //Serial.println("Backward Scan");
   //runCV(4, 2, 0, 0, -500, 600, 2, 100);
 }
@@ -223,13 +225,31 @@ void biasAndSample(int16_t voltage, uint16_t rate)
 
 void sampleOutputs()
 {
-  Serial.print(analogRead(DACRead));
+//  Serial.print(analogRead(DACRead));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(LMP));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(C1));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(C2));
+//
+//
+//  Serial.print(analogRead(DACRead));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(LMP));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(C1));
+//  Serial.print(F(","));
+//  Serial.print(analogRead(C2));
+
+
+  Serial.print(pStat.getVoltage(analogRead(DACRead),opVolt,adcBits),1);
   Serial.print(F(","));
-  Serial.print(analogRead(LMP));
+  Serial.print(pStat.getCurrent(analogRead(LMP),opVolt,adcBits,extGain),8);
   Serial.print(F(","));
-  Serial.print(analogRead(C1));
+  Serial.print(pStat.getCurrent(analogRead(C1),opVolt,adcBits,extGain),8);
   Serial.print(F(","));
-  Serial.print(analogRead(C2));
+  Serial.print(pStat.getCurrent(analogRead(C2),opVolt,adcBits,extGain),8);
 }
 
 
