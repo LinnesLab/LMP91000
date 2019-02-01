@@ -1,3 +1,48 @@
+/*
+ * FILENAME:  SquareWaveVoltammetry-wDueDAC.ino
+ * AUTHOR:    Orlando Hoilett
+ * VERSION:   V.1.0.0
+ * 
+ * 
+ * DESCRIPTION
+ * 
+ * 
+ * 
+ * UPDATES
+ * 
+ * 
+ * 
+ * DISCLAIMER
+ * Linnes Lab code, firmware, and software is released under the
+ * MIT License (http://opensource.org/licenses/MIT).
+ * 
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2019 Linnes Lab, Purdue University
+ * 
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software
+ * is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ * 
+ * 
+ */
+
+
 #include <Wire.h>
 #include <SPI.h>
 #include <LMP91000.h>
@@ -40,8 +85,8 @@ void setup()
 
   pinMode(AD56X4_SS_pin,OUTPUT);
   SPI.setClockDivider(SPI_CLOCK_DIV2);
-  SPI.begin();
-  
+  SPI.begin();  
+
   AD56X4.reset(AD56X4_SS_pin,true);
   
 
@@ -49,12 +94,13 @@ void setup()
   delay(50);
   pStat.standby();
   delay(50);
-  initLMP(0);
+  initLMP(5);
   delay(2000); //warm-up time for the gas sensor
 
 
   Serial.println(F("Ready!"));
 }
+
 
 void loop()
 {
@@ -65,18 +111,15 @@ void loop()
 
 
   //prints column headings
-//  if(debug) Serial.println(F("Time(ms),Voltage,Sign,Bias Index,Bias,dacOut,DueDACValue,DAC Read,LMP,C1,C2"));
-//  else Serial.println(F("Time(ms),Voltage,LMP,C1,C2"));
-
-  //prints column headings
-  if(debug) Serial.println(F("Time(ms),Voltage,Sign,Bias Index,Bias,dacOut,DueDACValue,DAC Read,LMP,C1,C2,DiffAmp,INA"));
-  else Serial.println(F("Time(ms),Voltage,LMP,C1,C2"));
+  if(debug) Serial.println("Time(ms),VF,Sign,Bias Index,Bias,dacVOut,DACVal,DAC Read,LMP,C1,C2,DiffAmp,INA,Time(ms),VF,Sign,Bias Index,Bias,dacVOut,DACVal,DAC Read,LMP,C1,C2,DiffAmp,INA");
+  else Serial.println("Time(ms),Volt,LMP,C1,C2,LMP,C1,C2");
 
   
-  //lmpGain, cycles, startV(mV), endV(mV), vertex1(mV), vertex2(mV), stsepV(mV), rate (mV/s)
-  runCV(4, 2, 0, 0, 450, -200, 2, 100);
-  //Serial.println("Backward Scan");
-  //runCV(4, 2, 0, 0, -500, 600, 2, 100);
+  //lmpGain, startV(mV), endV(mV), pulseAmp(mV), stepV(mV), freq(Hz)
+  runSWV(2, 0, 450, 50, 2, 120);
+  delay(3000);
+  Serial.println("Backward scan");
+  runSWV(2, 450, 0, 50, 2, 120);
 }
 
 
@@ -103,104 +146,53 @@ void setOutputsToZero()
 }
 
 
-void runCV(uint8_t lmpGain, uint8_t cycles, int16_t startV,
-           int16_t endV, int16_t vertex1, int16_t vertex2,
-           int16_t stepV, uint16_t rate)
+void runSWV(uint8_t lmpGain, int16_t startV, int16_t endV,
+            int16_t pulseAmp, int16_t stepV, uint16_t freq)
 {
   initLMP(lmpGain);
   stepV = abs(stepV);
-  rate = (1000.0*stepV)/rate;
+  pulseAmp = abs(pulseAmp);
+  freq = (uint16_t)(1000.0 / (2*freq));
 
 
-  if(vertex1 > startV) runCVForward(cycles,startV,endV,vertex1,vertex2,stepV,rate);
-  else runCVBackward(cycles,startV,endV,vertex1,vertex2,stepV,rate);
+  if(startV < endV) runSWVForward(startV, endV, pulseAmp, stepV, freq);
+  else runSWVBackward(startV, endV, pulseAmp, stepV, freq);
+
+  setOutputsToZero();
 }
 
 
-
-void runCVForward(uint8_t cycles, int16_t startV, int16_t endV,
-                  int16_t vertex1, int16_t vertex2, int16_t stepV, uint16_t rate)
+void runSWVForward(int16_t startV, int16_t endV, int16_t pulseAmp,
+                   int16_t stepV, uint16_t freq)
 {
-//  Serial.println("Forward");
-//  Serial.println(startV);
-//  Serial.println(endV);
-//  Serial.println(vertex1);
-//  Serial.println(vertex2);
-//  Serial.println(stepV);
-//  while(!Serial.available());
-//  Serial.println(rate);
-  
-  int16_t j = startV;
-  
-  for(uint8_t i = 0; i < cycles; i++)
+  for (int16_t j = startV; j <= endV; j += stepV)
   {
-    //j starts at startV
-    for (j; j <= vertex1; j += stepV)
-    {
-      biasAndSample(j,rate);
-//      Serial.println();
-//      Serial.println();
-//      Serial.println(freeMemory(), DEC);  // print how much RAM is available.
-    }
-    j -= 2*stepV;
-  
-  
-    //j starts right below the first vertex
-    for (j; j >= vertex2; j -= stepV)
-    {
-      biasAndSample(j,rate);
-    }
-    j += 2*stepV;
-  
-  
-    //j starts right above the second vertex
-    for (j; j <= endV; j += stepV)
-    {
-      biasAndSample(j,rate);
-    }
-    j -= 2*stepV;
-    
-  }
+    //positive pulse
+    biasAndSample(j + pulseAmp,freq);
+    Serial.print(F(","));
 
-  setOutputsToZero();
+    //negative pulse
+    biasAndSample(j - pulseAmp,freq);
+    Serial.println();
+  }
 }
 
 
-void runCVBackward(uint8_t cycles, int16_t startV, int16_t endV,
-                   int16_t vertex1, int16_t vertex2, int16_t stepV, uint16_t rate)
-{  
-  int16_t j = startV;
-  
-  for(uint8_t i = 0; i < cycles; i++)
+
+void runSWVBackward(int16_t startV, int16_t endV, int16_t pulseAmp,
+                   int16_t stepV, uint16_t freq)
+{
+  for (int16_t j = startV; j >= endV; j -= stepV)
   {
-    //j starts at startV
-    for (j; j >= vertex1; j -= stepV)
-    {
-      biasAndSample(j,rate);
-    }
-    j += 2*stepV;
+    //positive pulse
+    biasAndSample(j + pulseAmp,freq);
+    Serial.print(F(","));
     
-
-    //j starts right above vertex1
-    for (j; j <= vertex2; j += stepV)
-    {
-      biasAndSample(j,rate);
-    }
-    j -= 2*stepV;
-  
-
-    //j starts right below vertex2
-    for (j; j >= endV; j -= stepV)
-    {
-      biasAndSample(j,rate);
-    }
-    j += 2*stepV;
-    
+    //negative pulse
+    biasAndSample(j - pulseAmp,freq);
+    Serial.println();
   }
-
-  setOutputsToZero();
 }
-
 
 
 void biasAndSample(int16_t voltage, uint16_t rate)
@@ -216,9 +208,7 @@ void biasAndSample(int16_t voltage, uint16_t rate)
   delay(rate);
   sampleOutputs();
   testingDiffAndINAAmps();
-  Serial.println();
 }
-
 
 
 void sampleOutputs()
@@ -275,7 +265,7 @@ void setVoltage(int16_t voltage)
   pStat.setBias(bias_setting);
   AD56X4.setChannel(AD56X4_SS_pin, AD56X4_SETMODE_INPUT, AD56X4_CHANNEL_B, convertDACVoutToDACVal(dacVout));
   AD56X4.updateChannel(AD56X4_SS_pin, AD56X4_CHANNEL_B);
-
+  
 
   if(debug)
   {
@@ -292,14 +282,12 @@ void setVoltage(int16_t voltage)
 }
 
 
-
 //Convert the desired voltage
 uint16_t convertDACVoutToDACVal(uint16_t dacVout)
 {
   //return (dacVout-dacMin)*((double)dacResolution/dacSpan);
   return dacVout*((double)dacResolution/opVolt);
 }
-
 
 
 void setLMPBias(int16_t voltage)
