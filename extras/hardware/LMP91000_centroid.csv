@@ -1,0 +1,12 @@
+Screaming Circuits SMD component position file.
+Created by Centroid_ScreamingCircuits_smd.ulp 1.2.0.
+
+Centroid Data for pc board: "LMP91000.brd" as of: 2/12/19 12:15 AM
+Measurements are in inches. Comma delimited
+Only surface mount components included
+
+RefDes,Layer,LocationX,LocationY,Rotation
+C1,Top,0.273,0.300,270
+LMP91000,Top,0.325,0.287,0
+R1,Top,0.146,0.596,90
+R2,Top,0.216,0.596,90

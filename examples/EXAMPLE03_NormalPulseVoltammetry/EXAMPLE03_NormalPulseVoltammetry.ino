@@ -52,7 +52,11 @@ void runNPV(uint8_t user_gain, uint32_t pulse_period, uint32_t pulse_width,
   startV =  opVolt*TIA_BIAS[abs(startV)]*startV/abs(startV);
   endV = determineLMP91000Bias(endV);
   endV =  opVolt*TIA_BIAS[abs(endV)]*endV/abs(endV);
-  
+
+
+  //this divides the voltage span for the scan
+  //by voltage resolution of the LMP91000
+  //referenced to the chip's operating voltage
   uint8_t pulses = abs((endV-startV)/(opVolt*0.02));
   int16_t incrV = (endV-startV)/pulses;
 

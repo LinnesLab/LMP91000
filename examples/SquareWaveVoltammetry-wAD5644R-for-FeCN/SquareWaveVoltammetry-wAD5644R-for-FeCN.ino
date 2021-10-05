@@ -135,9 +135,9 @@ void loop()
 
   
   //lmpGain, startV(mV), endV(mV), pulseAmp(mV), stepV(mV), freq(Hz)
-  runSWV(2, 50, -500, 50, 5, 0.8);
-  Serial.println("Backward scan");
-  runSWV(2, -500, 50, 50, 5, 0.8);
+  runSWV(2, 500, -500, 50, 2, 120);
+//  Serial.println("Backward scan");
+//  runSWV(2, -500, 50, 50, 5, 0.8);
   setOutputsToZero();
 }
 

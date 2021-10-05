@@ -1,13 +1,13 @@
-extras/hardware/*
-!*.sch
-!*.brd
-!*.zip
-!*.pdf
-!*.png
-!*.jpg
-!*.jpeg
-!*.xlsx
-!*.xls
-
 # Ignore Mac DS_Store files in all directories
 .DS_Store
+
+
+#Ignore EAGLE board and schematic auto save files (.b#x and .s#x) in all directories
+*.b#?
+*.s#?
+*.l#?
+
+
+#Development file for making local changes to Arduino libraries
+#Ignore in all directories
+.development
