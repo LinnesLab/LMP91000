@@ -560,8 +560,8 @@ double LMP91000::getTemp(uint8_t sensor, double adc_ref, uint8_t adc_bits) const
     write(LMP91000_MODECN_REG, data);
     
     delay(100);
-    
-    return (getVoltage(sensor, adc_ref, adc_bits)-TEMP_INTERCEPT)/TEMPSLOPE;
+     
+    return (getVoltage(getOutput(sensor), adc_ref, adc_bits)-TEMP_INTERCEPT)/TEMPSLOPE;
 }
 
 
